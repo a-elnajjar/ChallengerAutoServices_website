@@ -1,0 +1,88 @@
+.row {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.container .columns {
+	float: left;
+	padding-right: 1em;
+	padding-left: 1em;
+	}
+	
+.container .columns.one,
+.container .columns.two,
+.container .columns.three,
+.container .columns.four,
+.container .columns.five,
+.container .columns.six,
+.container .columns.seven,
+.container .columns.eight,
+.container .columns.nine,
+.container .columns.ten,
+.container .columns.eleven,
+.container .columns.twelve,
+.container .columns.thirteen,
+.container .columns.fourteen,
+.container .columns.fifteen,
+.container .columns.sixteen 	{	width: 	100%	}
+
+.container {
+	width: 100%;
+}
+	
+
+.clearfix:after,
+.container:after {
+	content: '';
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+	clear: both;
+}
+.clearfix,
+.container {
+	zoom: 1; 
+}
+
+
+/*media queries*/
+@media only screen and (min-width: 450px) {
+	
+	body {
+		font-size: 1em; /* 16 / 16 */	
+		line-height: 1.5em;
+	}
+
+	.container .columns.one 		{	width: 	6.25%	}
+	.container .columns.two 		{	width: 	12.5%	}
+	.container .columns.three 		{	width: 	18.75%	}
+	.container .columns.four 		{	width: 	25%		}
+	.container .columns.five 		{	width: 	31.25%	}
+	.container .columns.six 		{	width: 	37.5%	}
+	.container .columns.seven 		{	width: 	43.75%	}
+	.container .columns.eight 		{	width: 	50%		}
+	.container .columns.nine 		{	width: 	56.25%	}
+	.container .columns.ten 		{	width: 	62.5%	}
+	.container .columns.eleven 		{	width: 	68.75%	}
+	.container .columns.twelve 		{	width: 	75%		}
+	.container .columns.thirteen 	{	width: 	81.25%	}
+	.container .columns.fourteen 	{	width: 	87.5%	}
+	.container .columns.fifteen 	{	width: 	93.75%	}
+	.container .columns.sixteen 	{	width: 	100%	}
+	
+	.container {
+		width: 90%;
+		margin: 0 auto;	
+	}	
+
+}
+
+
+html.lt-ie9 {
+	max-width: 600px;
+	margin: 0 auto;
+	position: relative;
+}

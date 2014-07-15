@@ -1,0 +1,101 @@
+/*imports*/
+.row { float: left; clear: both; width: 100%; }
+
+.container .columns { float: left; padding-right: 1em; padding-left: 1em; }
+
+.container .columns.one, .container .columns.two, .container .columns.three, .container .columns.four, .container .columns.five, .container .columns.six, .container .columns.seven, .container .columns.eight, .container .columns.nine, .container .columns.ten, .container .columns.eleven, .container .columns.twelve, .container .columns.thirteen, .container .columns.fourteen, .container .columns.fifteen, .container .columns.sixteen { width: 100%; }
+
+.container { width: 100%; }
+
+.clearfix:after, .container:after { content: ''; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; clear: both; }
+
+.clearfix, .container { zoom: 1; }
+
+/*media queries*/
+@media only screen and (min-width: 450px) { body { font-size: 1em; /* 16 / 16 */ line-height: 1.5em; }
+  .container .columns.one { width: 6.25%; }
+  .container .columns.two { width: 12.5%; }
+  .container .columns.three { width: 18.75%; }
+  .container .columns.four { width: 25%; }
+  .container .columns.five { width: 31.25%; }
+  .container .columns.six { width: 37.5%; }
+  .container .columns.seven { width: 43.75%; }
+  .container .columns.eight { width: 50%; }
+  .container .columns.nine { width: 56.25%; }
+  .container .columns.ten { width: 62.5%; }
+  .container .columns.eleven { width: 68.75%; }
+  .container .columns.twelve { width: 75%; }
+  .container .columns.thirteen { width: 81.25%; }
+  .container .columns.fourteen { width: 87.5%; }
+  .container .columns.fifteen { width: 93.75%; }
+  .container .columns.sixteen { width: 100%; }
+  .container { width: 90%; margin: 0 auto; } }
+html.lt-ie9 { max-width: 600px; margin: 0 auto; position: relative; }
+
+/*styles*/
+@-ms-viewport { width: device-width; }
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+html { font: 100%/1.5em Helvetica, Arial, sans-serif; min-height: 100%; position: relative; padding-bottom: 20em; }
+
+body { font-size: 0.875em; /* 14 / 16 */ line-height: 1.5em; color: #313131; }
+
+img { max-width: 100%; height: auto; }
+
+/*typography*/
+h3 { color: #cc6741; }
+
+/*logo*/
+h1.logo a { width: 200px; height: 71px; display: block; background: url(img/LOGO.png) no-repeat 0 0; margin: 0 auto; border: 0; font: 0/0 a; text-shadow: none; color: transparent; background-color: transparent; }
+
+/*footer*/
+footer { text-align: center; padding: 2em 0 0 0; font-family: georgia, serif; }
+
+/*header*/
+header.row { padding: 3em 0; }
+
+/*band styles*/
+.band { padding: 2em 0; }
+
+/*navigation*/
+a.nav-link { position: absolute; top: 0; right: 1em; background: #cc6741; text-decoration: none; color: white; padding: .5em; font-weight: bold; border-radius: 0 0 .2em .2em; }
+
+nav[role="primary"] ul { list-style: none; position: absolute; bottom: 0; left: 0; width: 100%; }
+
+nav[role="primary"] ul li a { text-decoration: none; font-weight: bold; background: #444; display: block; padding: .75em; border-bottom: 1px solid #999; color: #f7f7f7; }
+
+nav[role="primary"] ul li a:hover { background: #cc6741; }
+
+nav[role="primary"] ul li:last-child a { border: none; }
+
+/*page specific styles*/
+.featured-section { padding: 2em 0 0; }
+
+.featured-section .four { margin: 1em 0; }
+
+.banner h2 { color: #cc6741; font-size: 3.2em; line-height: 1em; letter-spacing: -0.05em; text-align: center; font-family: georgia, serif; }
+
+.learn-more { background: #3b3b3b; text-align: center; }
+
+.learn-more h2 { color: #f9f9f9; line-height: 2em; }
+
+.button { padding: 0 .75em; background: #cc6741; color: white; text-decoration: none; border-radius: .1em; font-weight: bold; display: inline-block; }
+
+.button:hover { background: #da6133; }
+
+/*media queries*/
+@media only screen and (min-width: 450px) { h1.logo { float: left; margin: 0 1em 0 0; }
+  .band.banner { padding: 10% 0; background: url("img/lamborghini_sports_car red_car.jpg") no-repeat center center; background-size: cover; }
+  .banner h2 { color: white; font-size: 5em; text-align: left; }
+  .container .featured-section .four { width: 50%; }
+  .container .featured-section .four:nth-child(3) { clear: both; }
+  /*navigation*/
+  a.nav-link { display: none; }
+  nav[role="primary"] ul { position: relative; }
+  nav[role="primary"] ul li { position: relative; margin: 1.8em 0 0 0; }
+  nav[role="primary"] ul li a { float: left; background: none; color: #333; border: none; border-radius: 0.2em; }
+  nav[role="primary"] ul li a:hover { color: #f8f8f8; background: #3b3b3b; } }
+@media only screen and (min-width: 900px) { .container .featured-section .four { width: 25%; }
+  .container .featured-section .four:nth-child(3) { clear: none; }
+  .featured-section .four { margin: 2em 0; } }
