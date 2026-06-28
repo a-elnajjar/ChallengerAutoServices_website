@@ -1,0 +1,193 @@
+{
+  "$schema": "https://schemas.local/design-tokens.json",
+  "meta": {
+    "name": "Drive Auto Repair & Maintenance — Design Language",
+    "source": "https://driveautorepairs.com/",
+    "extractedFrom": "Live site content + markup (Squarespace). Layout, hierarchy, content structure, and voice observed directly; color hex values and exact font families are INFERRED from visual cues and marked with `_confidence`.",
+    "platform": "Squarespace",
+    "version": "1.0.0",
+    "usage": "Reference this file in Cursor (e.g. via a .cursorrules note or @design-tokens.json) so generated UI matches the brand. Replace any value marked _confidence: 'inferred' once verified against the live site.",
+    "lastUpdated": "2026-06-28"
+  },
+
+  "brand": {
+    "businessName": "Drive Auto Repair & Maintenance",
+    "formerName": "Import Auto Services",
+    "tagline": "Your Trusted Service Shop for Everything Automotive",
+    "established": "1988",
+    "ownership": "Family- and veteran-owned",
+    "location": "Roswell, GA (Metro Atlanta)",
+    "personality": ["honest", "friendly", "no-gimmicks", "trustworthy", "approachable", "expert", "industrial-but-welcoming"],
+    "voice": {
+      "tone": "Plain-spoken, warm, confidence-building. Avoids jargon and hard-sell language. Emphasizes trust, transparency, and craftsmanship.",
+      "doSay": ["honest", "friendly", "no hassles or gimmicks", "peace of mind", "treat every car as if it were our own", "transparent"],
+      "avoid": ["aggressive sales language", "technical jargon without explanation", "urgency/pressure tactics"]
+    }
+  },
+
+  "color": {
+    "_note": "Hex values are INFERRED from the dark 'inverse' logo, automotive trade aesthetic, and typical contrast patterns. Verify against the live site and adjust the accent in particular.",
+    "background": {
+      "base":      { "value": "#0E0F12", "_confidence": "inferred", "_desc": "Primary dark surface implied by the light/inverse logo." },
+      "elevated":  { "value": "#16181D", "_confidence": "inferred", "_desc": "Cards, panels raised off the base." },
+      "light":     { "value": "#F5F6F7", "_confidence": "inferred", "_desc": "Alternating light content sections." },
+      "lightAlt":  { "value": "#FFFFFF", "_confidence": "inferred" }
+    },
+    "text": {
+      "onDark":      { "value": "#FFFFFF", "_confidence": "observed", "_desc": "Light logo/heading text on dark." },
+      "onDarkMuted": { "value": "#B7BBC2", "_confidence": "inferred" },
+      "onLight":     { "value": "#1A1C20", "_confidence": "inferred" },
+      "onLightMuted":{ "value": "#5A5F68", "_confidence": "inferred" }
+    },
+    "accent": {
+      "primary":      { "value": "#C8102E", "_confidence": "inferred", "_desc": "Automotive red as the brand accent / CTA color. PLACEHOLDER — confirm the real brand color." },
+      "primaryHover": { "value": "#A60D26", "_confidence": "inferred" },
+      "onAccent":     { "value": "#FFFFFF", "_confidence": "inferred" }
+    },
+    "border": {
+      "subtle":  { "value": "#2A2D34", "_confidence": "inferred" },
+      "onLight": { "value": "#E2E4E8", "_confidence": "inferred" }
+    },
+    "state": {
+      "success": { "value": "#2E7D32", "_confidence": "inferred" },
+      "warning": { "value": "#ED6C02", "_confidence": "inferred" },
+      "error":   { "value": "#C8102E", "_confidence": "inferred" }
+    }
+  },
+
+  "typography": {
+    "_note": "Squarespace template typically pairs a bold display sans for headings with a neutral humanist sans for body. Heading family is INFERRED; the bold all-caps make/brand list ('ACURA', 'BMW'...) confirms large, heavy, tight display headings.",
+    "fontFamilies": {
+      "heading": {
+        "stack": "'Oswald', 'Montserrat', 'Helvetica Neue', Arial, sans-serif",
+        "_confidence": "inferred",
+        "_desc": "Bold, slightly condensed display sans for big headlines and brand-name callouts."
+      },
+      "body": {
+        "stack": "'Proxima Nova', 'Montserrat', 'Helvetica Neue', Arial, sans-serif",
+        "_confidence": "inferred",
+        "_desc": "Clean, readable humanist sans for paragraphs and UI."
+      }
+    },
+    "weights": { "regular": 400, "medium": 500, "semibold": 600, "bold": 700, "extrabold": 800 },
+    "scale": {
+      "_note": "rem-based modular scale (root = 16px). Hierarchy relationships observed from the page; exact px sizes are typical defaults.",
+      "display":  { "size": "3.5rem",  "lineHeight": 1.05, "weight": 800, "letterSpacing": "-0.01em", "case": "none", "_use": "Hero headline, oversized brand-name marquee." },
+      "h1":       { "size": "2.5rem",  "lineHeight": 1.1,  "weight": 700, "letterSpacing": "-0.005em", "case": "none" },
+      "h2":       { "size": "2rem",    "lineHeight": 1.15, "weight": 700, "_use": "Section titles e.g. 'Explore Our Services'." },
+      "h3":       { "size": "1.5rem",  "lineHeight": 1.2,  "weight": 600, "_use": "Sub-section / feature titles." },
+      "h4":       { "size": "1.25rem", "lineHeight": 1.25, "weight": 600, "_use": "Service item titles." },
+      "bodyLarge":{ "size": "1.125rem","lineHeight": 1.6,  "weight": 400, "_use": "Hero intro paragraph." },
+      "body":     { "size": "1rem",    "lineHeight": 1.65, "weight": 400 },
+      "small":    { "size": "0.875rem","lineHeight": 1.5,  "weight": 400 },
+      "overline": { "size": "0.75rem", "lineHeight": 1.4,  "weight": 600, "letterSpacing": "0.08em", "case": "uppercase", "_use": "Eyebrow labels e.g. 'We Service All Foreign and Domestic Makes'." }
+    }
+  },
+
+  "spacing": {
+    "_note": "8px base scale.",
+    "unit": "8px",
+    "scale": {
+      "xs": "4px", "sm": "8px", "md": "16px", "lg": "24px",
+      "xl": "40px", "2xl": "64px", "3xl": "96px", "4xl": "128px"
+    },
+    "sectionPaddingY": { "value": "96px", "_desc": "Generous vertical rhythm between content sections." },
+    "containerMaxWidth": "1200px",
+    "containerPaddingX": "24px"
+  },
+
+  "radii": {
+    "_note": "Inferred — automotive/industrial sites favor minimal-to-moderate rounding.",
+    "none": "0px",
+    "sm": "4px",
+    "md": "8px",
+    "lg": "12px",
+    "pill": "999px",
+    "_confidence": "inferred"
+  },
+
+  "shadows": {
+    "_confidence": "inferred",
+    "sm": "0 1px 2px rgba(0,0,0,0.20)",
+    "md": "0 4px 12px rgba(0,0,0,0.25)",
+    "lg": "0 12px 32px rgba(0,0,0,0.35)"
+  },
+
+  "breakpoints": {
+    "mobile": "0px",
+    "tablet": "768px",
+    "desktop": "1024px",
+    "wide": "1440px"
+  },
+
+  "components": {
+    "button": {
+      "_note": "Primary CTA repeated across the site: 'Schedule Service', 'Contact Us', 'Get in Touch'.",
+      "primary": {
+        "background": "{color.accent.primary}",
+        "backgroundHover": "{color.accent.primaryHover}",
+        "text": "{color.accent.onAccent}",
+        "fontWeight": 600,
+        "paddingY": "14px",
+        "paddingX": "28px",
+        "radius": "{radii.sm}",
+        "textTransform": "none",
+        "letterSpacing": "0.01em",
+        "_confidence": "inferred"
+      },
+      "secondary": {
+        "background": "transparent",
+        "border": "1px solid currentColor",
+        "text": "{color.text.onDark}",
+        "fontWeight": 600,
+        "_confidence": "inferred"
+      }
+    },
+    "nav": {
+      "layout": "Logo left, links center/right, prominent 'Schedule Service' CTA at the end.",
+      "links": ["Home", "Services (dropdown)", "About (dropdown)", "Schedule Service"],
+      "servicesDropdown": ["View All Services", "Tire Service", "Oil Change Service", "Brake Pad and Rotor Service", "General Repairs and Maintenance", "Service Warranty", "Special Offers"],
+      "aboutDropdown": ["About Us", "Blog", "Schedule Service"],
+      "background": "{color.background.base}",
+      "sticky": true,
+      "_confidence": "structure observed; styling inferred"
+    },
+    "card": {
+      "_use": "Service list items and 'Why Choose Us' feature blocks.",
+      "background": "{color.background.elevated}",
+      "padding": "{spacing.scale.lg}",
+      "radius": "{radii.md}",
+      "titleStyle": "{typography.scale.h4}",
+      "_confidence": "inferred"
+    },
+    "section": {
+      "pattern": "Alternating dark + light full-bleed sections, each with a large heading, supporting paragraph, and one CTA. Full-width photographic imagery used as section anchors.",
+      "imageStyle": "Full-bleed automotive/garage photography (e.g. unsplash shop + car detail shots).",
+      "_confidence": "observed"
+    },
+    "footer": {
+      "content": ["Hours of Operation", "Address", "Phone", "Get in Touch (Schedule Service / Call Us)", "Social links (Facebook, Instagram, Google, Yelp)"],
+      "background": "{color.background.base}",
+      "_confidence": "observed"
+    }
+  },
+
+  "imagery": {
+    "style": "Real, high-quality photography of cars, garages, and shop work. Documentary/authentic over stocky. Used full-bleed as section dividers.",
+    "treatment": "Minimal overlay; lets photos breathe. Pairs with bold white headings on darker images.",
+    "_confidence": "observed"
+  },
+
+  "layoutPrinciples": [
+    "Generous whitespace and clear single-column reading flow on a wide container.",
+    "Strong type hierarchy: oversized bold headings, comfortable body line-height (~1.6).",
+    "One clear CTA per section, almost always 'Schedule Service' or 'Get in Touch'.",
+    "Alternating dark/light sections to create rhythm.",
+    "Trust signals foregrounded: warranty, OEM parts, owner onsite, years in business."
+  ],
+
+  "cursorUsage": {
+    "howToUse": "Drop this file in your repo root. In .cursorrules add: 'Use design-tokens.json as the single source of truth for colors, typography, spacing, and component styles. Treat any token marked _confidence:inferred as a default the user may override.' Then reference it with @design-tokens.json when prompting Cursor to build UI.",
+    "tokenReferenceSyntax": "Values in {curly.braces} are aliases pointing to other tokens — resolve them before use."
+  }
+}
