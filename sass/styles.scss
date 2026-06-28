@@ -341,7 +341,10 @@ h4 {
 
 .header-inner {
 	position: relative;
-	padding-bottom: 12em;
+}
+
+.logo {
+	max-width: calc(100% - 5.5rem);
 }
 
 .logo a {
@@ -367,10 +370,6 @@ h4 {
 
 .mega-nav__list {
 	list-style: none;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
 }
 
 .mega-nav__link {
@@ -393,7 +392,12 @@ h4 {
 	border-bottom: none;
 }
 
-.mega-nav__link:hover,
+.mega-nav__link:hover {
+	background: var(--color-bg-elevated);
+	color: var(--color-text-on-dark);
+}
+
+.mega-trigger.is-active,
 .mega-nav__link.is-active {
 	background: var(--color-accent);
 	color: var(--color-on-accent);
@@ -493,11 +497,16 @@ h4 {
 	padding: var(--space-md) var(--space-lg);
 }
 
+.mega-mobile-panel .mega-menu-column {
+	opacity: 1;
+}
+
 .mega-mobile-panel .mega-menu-columns {
 	gap: var(--space-lg);
 }
 
-a.nav-link {
+a.nav-link,
+button.nav-link {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -507,8 +516,91 @@ a.nav-link {
 	padding: 0.5em 0.75em;
 	font-weight: 600;
 	font-size: 0.875rem;
+	font-family: var(--font-body);
+	border: 0;
 	border-radius: var(--radius-sm);
+	cursor: pointer;
 	z-index: 1;
+}
+
+/* Mobile navigation */
+@media only screen and (max-width: 767px) {
+	.container {
+		padding-left: var(--space-md);
+		padding-right: var(--space-md);
+	}
+
+	.logo a {
+		font-size: 1rem;
+		line-height: 1.3;
+	}
+
+	.header-inner {
+		padding-bottom: var(--space-sm);
+	}
+
+	.mega-nav {
+		width: 100%;
+	}
+
+	.site-header.is-nav-open .mega-nav {
+		margin-top: var(--space-md);
+	}
+
+	.mega-nav__list {
+		display: none;
+		border: 1px solid var(--color-border-subtle);
+		border-radius: var(--radius-md);
+		overflow: hidden;
+	}
+
+	.site-header.is-nav-open .mega-nav__list {
+		display: block;
+	}
+
+	.has-mega .mega-mobile-panel {
+		border: 0;
+		border-top: 1px solid var(--color-border-subtle);
+		border-radius: 0;
+		padding: var(--space-md);
+	}
+
+	.mega-menu-panel {
+		display: none !important;
+	}
+
+	.banner-bg,
+	.banner-overlay {
+		display: block;
+	}
+
+	.band.banner {
+		min-height: 420px;
+		display: flex;
+		align-items: center;
+	}
+
+	.banner-content {
+		text-align: center;
+	}
+
+	.banner-intro {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.cta-band__actions {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.cta-band__actions .button {
+		text-align: center;
+	}
+
+	.site-footer {
+		padding: var(--space-2xl) 0 var(--space-xl);
+	}
 }
 
 /* Banner / Hero */
@@ -653,7 +745,8 @@ a.nav-link {
 		padding-bottom: var(--space-md);
 	}
 
-	a.nav-link {
+	a.nav-link,
+	button.nav-link {
 		display: none;
 	}
 
