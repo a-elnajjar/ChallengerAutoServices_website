@@ -11,9 +11,28 @@ const columns = () => panel?.querySelectorAll(".mega-menu-column:not(.is-hidden)
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const desktop = () => window.matchMedia("(min-width: 768px)").matches;
 
+const CLOSE_DELAY = 250;
+
 let activeMenu = null;
 let closeTimer = null;
 let panelAnimation = null;
+let clickPinned = false;
+
+function getTrigger(menuId) {
+	return document.querySelector(`.mega-trigger[data-menu="${menuId}"]`);
+}
+
+function getPanelLinks(menuId) {
+	const root = desktop()
+		? panel?.querySelector(`[data-panel="${menuId}"]`)
+		: document.querySelector(`.mega-mobile-panel [data-panel="${menuId}"], .mega-mobile-panel`);
+
+	if (!root) {
+		return panel?.querySelector(`[data-panel="${menuId}"]`)?.querySelectorAll("a") ?? [];
+	}
+
+	return root.querySelectorAll("a");
+}
 
 function moveIndicator(target) {
 	if (!indicator || !nav || !target || target.classList.contains("nav-cta")) {
@@ -42,7 +61,7 @@ function moveIndicator(target) {
 }
 
 function hideIndicator() {
-	if (!indicator) return;
+	if (!indicator || clickPinned) return;
 
 	if (reducedMotion) {
 		indicator.style.opacity = "0";
@@ -77,6 +96,13 @@ function hideColumns(items) {
 	animate(items, { opacity: 0, y: 8 }, { duration: 0.12 });
 }
 
+function resetTriggers() {
+	triggers.forEach((trigger) => {
+		trigger.classList.remove("is-active");
+		trigger.setAttribute("aria-expanded", "false");
+	});
+}
+
 function setActiveTrigger(menuId) {
 	triggers.forEach((trigger) => {
 		const isActive = trigger.dataset.menu === menuId;
@@ -85,14 +111,25 @@ function setActiveTrigger(menuId) {
 	});
 }
 
-function openMenu(menuId) {
+function clearMobilePanels() {
+	document.querySelectorAll(".mega-mobile-panel").forEach((el) => el.remove());
+}
+
+function focusFirstPanelLink(menuId) {
+	const firstLink = getPanelLinks(menuId)[0];
+	firstLink?.focus();
+}
+
+function openMenu(menuId, { focusFirst = false } = {}) {
 	if (!panel || !desktop()) return;
 
 	const content = panel.querySelector(`[data-panel="${menuId}"]`);
-	if (!content) return;
+	const trigger = getTrigger(menuId);
+	if (!content || !trigger) return;
 
 	clearTimeout(closeTimer);
 	panelAnimation?.stop?.();
+	clickPinned = false;
 
 	contents.forEach((block) => {
 		block.hidden = block !== content;
@@ -105,11 +142,13 @@ function openMenu(menuId) {
 	panel.hidden = false;
 	setActiveTrigger(menuId);
 	activeMenu = menuId;
+	moveIndicator(trigger);
 
 	if (reducedMotion) {
 		panel.style.height = "auto";
 		panel.style.opacity = "1";
 		revealColumns();
+		if (focusFirst) focusFirstPanelLink(menuId);
 		return;
 	}
 
@@ -128,25 +167,45 @@ function openMenu(menuId) {
 		panelAnimation.then(() => {
 			panel.style.height = "auto";
 			revealColumns();
+			if (focusFirst) focusFirstPanelLink(menuId);
 		}).catch(() => {});
 	});
 }
 
-function closeMenu() {
-	if (!panel || !activeMenu) return;
+function closeMenu({ returnFocus = false } = {}) {
+	const previousMenu = activeMenu;
+	const previousTrigger = previousMenu ? getTrigger(previousMenu) : null;
+	const panelWasOpen = panel && !panel.hidden && desktop();
+
+	clearMobilePanels();
+	resetTriggers();
+	clickPinned = false;
+
+	if (!panelWasOpen || !previousMenu) {
+		if (panel) {
+			panel.hidden = true;
+			panel.style.height = "";
+		}
+		contents.forEach((block) => {
+			block.hidden = true;
+		});
+		activeMenu = null;
+		if (returnFocus && previousTrigger) previousTrigger.focus();
+		return;
+	}
 
 	const visibleColumns = [...columns()];
 	hideColumns(visibleColumns);
 
-	triggers.forEach((trigger) => {
-		trigger.classList.remove("is-active");
-		trigger.setAttribute("aria-expanded", "false");
-	});
-
 	if (reducedMotion) {
 		panel.hidden = true;
 		panel.style.height = "";
+		contents.forEach((block) => {
+			block.hidden = true;
+		});
 		activeMenu = null;
+		hideIndicator();
+		if (returnFocus && previousTrigger) previousTrigger.focus();
 		return;
 	}
 
@@ -168,23 +227,72 @@ function closeMenu() {
 				block.hidden = true;
 			});
 			activeMenu = null;
+			hideIndicator();
+			if (returnFocus && previousTrigger) previousTrigger.focus();
 		}).catch(() => {});
 	});
 }
 
+function toggleMenu(menuId, { focusFirst = false } = {}) {
+	if (activeMenu === menuId && !document.querySelector(".mega-mobile-panel")) {
+		closeMenu({ returnFocus: true });
+		return;
+	}
+
+	openMenu(menuId, { focusFirst });
+}
+
 function scheduleClose() {
+	if (clickPinned) return;
+
 	clearTimeout(closeTimer);
-	closeTimer = setTimeout(closeMenu, 120);
+	closeTimer = setTimeout(() => closeMenu(), CLOSE_DELAY);
 }
 
 function cancelClose() {
 	clearTimeout(closeTimer);
 }
 
+function openMobileMenu(trigger) {
+	const menuId = trigger.dataset.menu;
+	const isOpen = activeMenu === menuId;
+
+	clearMobilePanels();
+
+	if (isOpen) {
+		activeMenu = null;
+		trigger.setAttribute("aria-expanded", "false");
+		trigger.classList.remove("is-active");
+		return;
+	}
+
+	resetTriggers();
+
+	const content = panel.querySelector(`[data-panel="${menuId}"]`);
+	if (!content) return;
+
+	const mobilePanel = content.cloneNode(true);
+	mobilePanel.removeAttribute("id");
+	mobilePanel.classList.add("mega-mobile-panel");
+	mobilePanel.hidden = false;
+	trigger.closest(".mega-nav__item")?.after(mobilePanel);
+	trigger.classList.add("is-active");
+	trigger.setAttribute("aria-expanded", "true");
+	activeMenu = menuId;
+
+	if (!reducedMotion) {
+		animate(
+			mobilePanel.querySelectorAll(".mega-menu-column"),
+			{ opacity: [0, 1], y: [12, 0] },
+			{ delay: stagger(0.05), duration: 0.35 }
+		);
+	}
+}
+
 if (nav && panel) {
 	navLinks.forEach((link) => {
 		link.addEventListener("mouseenter", () => {
-			if (!desktop()) return;
+			if (!desktop() || clickPinned) return;
 			moveIndicator(link);
 			if (!link.classList.contains("mega-trigger")) {
 				closeMenu();
@@ -199,49 +307,62 @@ if (nav && panel) {
 
 	triggers.forEach((trigger) => {
 		trigger.addEventListener("mouseenter", () => {
-			if (!desktop()) return;
+			if (!desktop() || clickPinned) return;
 			cancelClose();
-			moveIndicator(trigger);
 			openMenu(trigger.dataset.menu);
 		});
 
-		trigger.addEventListener("click", () => {
-			if (desktop()) return;
+		trigger.addEventListener("click", (event) => {
+			event.preventDefault();
 
-			const menuId = trigger.dataset.menu;
-			const isOpen = activeMenu === menuId;
-
-			document.querySelectorAll(".mega-mobile-panel").forEach((el) => el.remove());
-
-			if (isOpen) {
-				activeMenu = null;
-				trigger.setAttribute("aria-expanded", "false");
-				trigger.classList.remove("is-active");
+			if (!desktop()) {
+				openMobileMenu(trigger);
 				return;
 			}
 
-			triggers.forEach((btn) => {
-				btn.classList.remove("is-active");
-				btn.setAttribute("aria-expanded", "false");
-			});
+			clickPinned = true;
+			cancelClose();
 
-			const content = panel.querySelector(`[data-panel="${menuId}"]`);
-			if (!content) return;
+			if (activeMenu === trigger.dataset.menu) {
+				closeMenu({ returnFocus: true });
+				return;
+			}
 
-			const mobilePanel = content.cloneNode(true);
-			mobilePanel.classList.add("mega-mobile-panel");
-			mobilePanel.hidden = false;
-			trigger.closest(".mega-nav__item")?.after(mobilePanel);
-			trigger.classList.add("is-active");
-			trigger.setAttribute("aria-expanded", "true");
-			activeMenu = menuId;
+			toggleMenu(trigger.dataset.menu);
+		});
 
-			if (!reducedMotion) {
-				animate(
-					mobilePanel.querySelectorAll(".mega-menu-column"),
-					{ opacity: [0, 1], y: [12, 0] },
-					{ delay: stagger(0.05), duration: 0.35 }
-				);
+		trigger.addEventListener("keydown", (event) => {
+			const menuId = trigger.dataset.menu;
+
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+
+				if (!desktop()) {
+					openMobileMenu(trigger);
+					return;
+				}
+
+				clickPinned = true;
+				cancelClose();
+
+				if (activeMenu === menuId) {
+					closeMenu({ returnFocus: true });
+					return;
+				}
+
+				toggleMenu(menuId, { focusFirst: true });
+			}
+
+			if (event.key === "ArrowDown" && desktop()) {
+				event.preventDefault();
+				clickPinned = true;
+				cancelClose();
+				openMenu(menuId, { focusFirst: true });
+			}
+
+			if (event.key === "Escape") {
+				event.preventDefault();
+				closeMenu({ returnFocus: true });
 			}
 		});
 	});
@@ -249,22 +370,39 @@ if (nav && panel) {
 	panel.addEventListener("mouseenter", cancelClose);
 	panel.addEventListener("mouseleave", scheduleClose);
 
+	panel.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") {
+			event.preventDefault();
+			closeMenu({ returnFocus: true });
+		}
+	});
+
 	nav.addEventListener("mouseleave", () => {
-		if (!desktop()) return;
+		if (!desktop() || clickPinned) return;
 		scheduleClose();
 		hideIndicator();
 	});
 
 	document.addEventListener("keydown", (event) => {
-		if (event.key === "Escape") {
-			closeMenu();
+		if (event.key === "Escape" && activeMenu) {
+			closeMenu({ returnFocus: true });
 		}
+	});
+
+	document.addEventListener("click", (event) => {
+		if (!desktop() || !activeMenu) return;
+
+		const target = event.target;
+		if (target instanceof Node && nav.contains(target)) return;
+		if (target instanceof Node && panel.contains(target)) return;
+
+		closeMenu();
 	});
 
 	window.addEventListener("resize", () => {
 		if (!desktop()) {
 			closeMenu();
-			document.querySelectorAll(".mega-mobile-panel").forEach((el) => el.remove());
+			clearMobilePanels();
 			activeMenu = null;
 		}
 	});

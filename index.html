@@ -36,13 +36,13 @@
                                 <a href="#" class="mega-nav__link" data-nav="home">Home</a>
                             </li>
                             <li class="mega-nav__item has-mega">
-                                <button type="button" class="mega-nav__link mega-trigger" data-menu="services" aria-expanded="false" aria-haspopup="true">
+                                <button type="button" class="mega-nav__link mega-trigger" id="mega-trigger-services" data-menu="services" aria-expanded="false" aria-haspopup="true" aria-controls="mega-menu-panel">
                                     Services
                                     <span class="mega-nav__chevron" aria-hidden="true"></span>
                                 </button>
                             </li>
                             <li class="mega-nav__item has-mega">
-                                <button type="button" class="mega-nav__link mega-trigger" data-menu="about" aria-expanded="false" aria-haspopup="true">
+                                <button type="button" class="mega-nav__link mega-trigger" id="mega-trigger-about" data-menu="about" aria-expanded="false" aria-haspopup="true" aria-controls="mega-menu-panel">
                                     About
                                     <span class="mega-nav__chevron" aria-hidden="true"></span>
                                 </button>
@@ -57,23 +57,23 @@
                 </div>
             </div>
 
-            <div class="mega-menu-panel" hidden>
+            <div class="mega-menu-panel" id="mega-menu-panel" role="region" aria-label="Submenu" hidden>
                 <div class="container">
                     <div class="mega-menu-panel__inner">
-                        <div class="mega-menu-content" data-panel="services" hidden>
+                        <div class="mega-menu-content" id="mega-panel-services" data-panel="services" role="region" aria-labelledby="mega-trigger-services" hidden>
                             <div class="mega-menu-columns">
                                 <div class="mega-menu-column">
-                                    <p class="mega-menu-label overline">Maintenance</p>
+                                    <p class="mega-menu-label overline">Popular Services</p>
                                     <ul>
                                         <li><a href="#services">Oil Change Service</a></li>
+                                        <li><a href="#services">Brake Pad &amp; Rotor Service</a></li>
                                         <li><a href="#services">Tire Service</a></li>
-                                        <li><a href="#services">General Repairs</a></li>
                                     </ul>
                                 </div>
                                 <div class="mega-menu-column">
-                                    <p class="mega-menu-label overline">Repairs</p>
+                                    <p class="mega-menu-label overline">Repairs &amp; Maintenance</p>
                                     <ul>
-                                        <li><a href="#services">Brake Pad &amp; Rotor Service</a></li>
+                                        <li><a href="#services">General Repairs &amp; Maintenance</a></li>
                                         <li><a href="#services">View All Services</a></li>
                                         <li><a href="#services">Service Warranty</a></li>
                                     </ul>
@@ -84,12 +84,12 @@
                                         <li><a href="#services">Special Offers</a></li>
                                         <li><a href="#">Schedule Service</a></li>
                                     </ul>
-                                    <p class="mega-menu-note">Honest diagnostics with no hassles or gimmicks.</p>
+                                    <p class="mega-menu-note">Foreign &amp; domestic · honest estimates · no gimmicks.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="mega-menu-content" data-panel="about" hidden>
+                        <div class="mega-menu-content" id="mega-panel-about" data-panel="about" role="region" aria-labelledby="mega-trigger-about" hidden>
                             <div class="mega-menu-columns">
                                 <div class="mega-menu-column">
                                     <p class="mega-menu-label overline">Our Shop</p>

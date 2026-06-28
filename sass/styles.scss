@@ -410,6 +410,12 @@ h4 {
 	transition: transform 0.2s ease;
 }
 
+@media (prefers-reduced-motion: reduce) {
+	.mega-nav__chevron {
+		transition: none;
+	}
+}
+
 .mega-trigger.is-active .mega-nav__chevron {
 	transform: rotate(-135deg) translateY(2px);
 }
@@ -672,10 +678,20 @@ a.nav-link {
 		color: var(--color-text-on-dark-muted);
 	}
 
-	.mega-nav__link:hover,
-	.mega-trigger.is-active {
+	.mega-nav__link:hover {
 		background: none;
 		color: var(--color-text-on-dark);
+	}
+
+	.mega-trigger.is-active {
+		background: none;
+		color: var(--color-accent);
+	}
+
+	.mega-nav__link:focus-visible,
+	.mega-menu-column a:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 2px;
 	}
 
 	.mega-nav__link.nav-cta {
