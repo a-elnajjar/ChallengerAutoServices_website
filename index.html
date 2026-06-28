@@ -30,15 +30,85 @@
 
                     <a href="#navigation" class="nav-link">Menu</a>
 
-                    <nav role="navigation" aria-label="Primary">
-                        <ul id="navigation">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#services">Services</a></li>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#" class="nav-cta">Schedule Service</a></li>
+                    <nav class="mega-nav" role="navigation" aria-label="Primary" id="navigation">
+                        <ul class="mega-nav__list">
+                            <li class="mega-nav__item">
+                                <a href="#" class="mega-nav__link" data-nav="home">Home</a>
+                            </li>
+                            <li class="mega-nav__item has-mega">
+                                <button type="button" class="mega-nav__link mega-trigger" data-menu="services" aria-expanded="false" aria-haspopup="true">
+                                    Services
+                                    <span class="mega-nav__chevron" aria-hidden="true"></span>
+                                </button>
+                            </li>
+                            <li class="mega-nav__item has-mega">
+                                <button type="button" class="mega-nav__link mega-trigger" data-menu="about" aria-expanded="false" aria-haspopup="true">
+                                    About
+                                    <span class="mega-nav__chevron" aria-hidden="true"></span>
+                                </button>
+                            </li>
+                            <li class="mega-nav__item">
+                                <a href="#" class="mega-nav__link nav-cta">Schedule Service</a>
+                            </li>
                         </ul>
+                        <span class="nav-indicator" aria-hidden="true"></span>
                     </nav>
 
+                </div>
+            </div>
+
+            <div class="mega-menu-panel" hidden>
+                <div class="container">
+                    <div class="mega-menu-panel__inner">
+                        <div class="mega-menu-content" data-panel="services" hidden>
+                            <div class="mega-menu-columns">
+                                <div class="mega-menu-column">
+                                    <p class="mega-menu-label overline">Maintenance</p>
+                                    <ul>
+                                        <li><a href="#services">Oil Change Service</a></li>
+                                        <li><a href="#services">Tire Service</a></li>
+                                        <li><a href="#services">General Repairs</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <p class="mega-menu-label overline">Repairs</p>
+                                    <ul>
+                                        <li><a href="#services">Brake Pad &amp; Rotor Service</a></li>
+                                        <li><a href="#services">View All Services</a></li>
+                                        <li><a href="#services">Service Warranty</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <p class="mega-menu-label overline">Offers</p>
+                                    <ul>
+                                        <li><a href="#services">Special Offers</a></li>
+                                        <li><a href="#">Schedule Service</a></li>
+                                    </ul>
+                                    <p class="mega-menu-note">Honest diagnostics with no hassles or gimmicks.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mega-menu-content" data-panel="about" hidden>
+                            <div class="mega-menu-columns">
+                                <div class="mega-menu-column">
+                                    <p class="mega-menu-label overline">Our Shop</p>
+                                    <ul>
+                                        <li><a href="#about">About Us</a></li>
+                                        <li><a href="#about">Why Choose Us</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <p class="mega-menu-label overline">Connect</p>
+                                    <ul>
+                                        <li><a href="#">Schedule Service</a></li>
+                                        <li><a href="tel:5551234567">Call Us</a></li>
+                                    </ul>
+                                    <p class="mega-menu-note">Family-owned. Treating every car as if it were our own.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -172,6 +242,7 @@
         </div>
     </footer>
 
+    <script type="module" src="js/mega-menu.js"></script>
     <script type="module" src="js/banner-motion.js"></script>
 </body>
 </html>
