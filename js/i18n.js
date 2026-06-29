@@ -247,6 +247,12 @@ export function applyLanguage(lang) {
 		btn.setAttribute("aria-pressed", active ? "true" : "false");
 	});
 
+	const langSwitch = document.getElementById("lang-switch");
+	if (langSwitch) {
+		langSwitch.classList.toggle("is-en", lang === "en");
+		langSwitch.classList.toggle("is-ar", lang === "ar");
+	}
+
 	localStorage.setItem(STORAGE_KEY, lang);
 
 	const url = new URL(window.location.href);

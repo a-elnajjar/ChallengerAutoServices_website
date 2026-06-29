@@ -86,12 +86,14 @@
 
         <div class="header-utility">
             <div class="container">
-                <a class="header-phone" href="tel:5551234567">(555) 123-4567</a>
-                <span class="header-hours" data-i18n="header.hours">Mon–Fri 8am–6pm · Sat 9am–2pm</span>
-                <div class="lang-switch" role="group" data-i18n-aria="lang.label">
-                    <button type="button" class="lang-switch__btn is-active" data-lang-switch="en" aria-pressed="true">EN</button>
-                    <span class="lang-switch__sep" aria-hidden="true">|</span>
-                    <button type="button" class="lang-switch__btn" data-lang-switch="ar" aria-pressed="false">العربية</button>
+                <div class="header-utility__info">
+                    <a class="header-phone" href="tel:5551234567">(555) 123-4567</a>
+                    <span class="header-hours" data-i18n="header.hours">Mon–Fri 8am–6pm · Sat 9am–2pm</span>
+                </div>
+                <div class="lang-switch is-en" id="lang-switch" role="group" data-i18n-aria="lang.label">
+                    <span class="lang-switch__thumb" aria-hidden="true"></span>
+                    <button type="button" class="lang-switch__option is-active" data-lang-switch="en" aria-pressed="true">EN</button>
+                    <button type="button" class="lang-switch__option" data-lang-switch="ar" aria-pressed="false">عربي</button>
                 </div>
             </div>
         </div>
