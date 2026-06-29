@@ -2,7 +2,15 @@
 
 Static marketing site for an auto repair shop — responsive layout, SEO metadata, animated hero, and a Motion-powered mega menu.
 
-**Live site:** [https://a-elnajjar.github.io/ChallengerAutoServices_website/](https://a-elnajjar.github.io/ChallengerAutoServices_website/)
+**Live site:** [https://a-elnajjar.github.io/ChallengerAutoServices_website](https://a-elnajjar.github.io/ChallengerAutoServices_website)
+
+## URLs
+
+| | Link |
+|---|---|
+| **Live site** | [https://a-elnajjar.github.io/ChallengerAutoServices_website](https://a-elnajjar.github.io/ChallengerAutoServices_website) |
+| **Arabic** | [https://a-elnajjar.github.io/ChallengerAutoServices_website/?lang=ar](https://a-elnajjar.github.io/ChallengerAutoServices_website/?lang=ar) |
+| **Repository** | [https://github.com/a-elnajjar/ChallengerAutoServices_website](https://github.com/a-elnajjar/ChallengerAutoServices_website) |
 
 ## Tech stack
 
@@ -62,7 +70,11 @@ Visual styling follows `design-tokens.json` (dark base `#0E0F12`, accent red `#C
 
 ## Deployment
 
-The site is deployed via **GitHub Pages** from the `master` branch. Push changes to the default branch; no separate build pipeline is required as long as `styles.css` is kept in sync with Sass.
+The site is deployed via **GitHub Pages** from the `master` branch at:
+
+[https://a-elnajjar.github.io/ChallengerAutoServices_website](https://a-elnajjar.github.io/ChallengerAutoServices_website)
+
+Push changes to the default branch; no separate build pipeline is required as long as `styles.css` is kept in sync with Sass.
 
 ## Customization
 
