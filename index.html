@@ -1,22 +1,98 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Challenger Auto Services | Your Trusted Service Shop</title>
+    <title>Challenger Auto Services | Auto Repair &amp; Maintenance Shop</title>
+    <meta name="description" content="Challenger Auto Services offers honest auto repair and maintenance for foreign and domestic vehicles. Oil changes, brakes, tires, and general repairs with no gimmicks.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Challenger Auto Services">
+    <link rel="canonical" href="https://a-elnajjar.github.io/ChallengerAutoServices_website/">
+    <link rel="alternate" hreflang="en" href="https://a-elnajjar.github.io/ChallengerAutoServices_website/">
+    <link rel="alternate" hreflang="ar" href="https://a-elnajjar.github.io/ChallengerAutoServices_website/?lang=ar">
+    <link rel="alternate" hreflang="x-default" href="https://a-elnajjar.github.io/ChallengerAutoServices_website/">
+    <link rel="icon" href="img/LOGO.png" type="image/png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Challenger Auto Services | Auto Repair &amp; Maintenance Shop">
+    <meta property="og:description" content="Honest, friendly auto repair and maintenance. Schedule service for oil changes, brakes, tires, and more.">
+    <meta property="og:url" content="https://a-elnajjar.github.io/ChallengerAutoServices_website/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ar_SA">
+    <meta property="og:site_name" content="Challenger Auto Services">
+    <meta property="og:image" content="https://a-elnajjar.github.io/ChallengerAutoServices_website/img/LOGO.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Challenger Auto Services | Auto Repair &amp; Maintenance Shop">
+    <meta name="twitter:description" content="Honest, friendly auto repair and maintenance. Schedule service for oil changes, brakes, tires, and more.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Montserrat:wght@400;500;600;700&family=Oswald:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoRepair",
+        "name": "Challenger Auto Services",
+        "description": "Honest auto repair and maintenance for foreign and domestic vehicles.",
+        "url": "https://a-elnajjar.github.io/ChallengerAutoServices_website/",
+        "telephone": "+1-555-123-4567",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Main Street",
+            "addressLocality": "Your City",
+            "addressRegion": "ST",
+            "postalCode": "00000",
+            "addressCountry": "US"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "08:00",
+                "closes": "18:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "09:00",
+                "closes": "14:00"
+            }
+        ],
+        "areaServed": {
+            "@type": "Country",
+            "name": "United States"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Auto Repair Services",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Oil Change Service" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brake Pad and Rotor Service" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tire Service" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "General Repairs and Maintenance" } }
+            ]
+        }
+    }
+    </script>
 </head>
-<body>
+<body id="top">
+    <a class="skip-link" href="#main-content" data-i18n="skipLink">Skip to main content</a>
+
     <header class="site-header">
 
         <div class="header-utility">
             <div class="container">
                 <a class="header-phone" href="tel:5551234567">(555) 123-4567</a>
-                <span class="header-hours">Mon–Fri 8am–6pm · Sat 9am–2pm</span>
+                <span class="header-hours" data-i18n="header.hours">Mon–Fri 8am–6pm · Sat 9am–2pm</span>
+                <div class="lang-switch" role="group" data-i18n-aria="lang.label">
+                    <button type="button" class="lang-switch__btn is-active" data-lang-switch="en" aria-pressed="true">EN</button>
+                    <span class="lang-switch__sep" aria-hidden="true">|</span>
+                    <button type="button" class="lang-switch__btn" data-lang-switch="ar" aria-pressed="false">العربية</button>
+                </div>
             </div>
         </div>
 
@@ -24,31 +100,31 @@
             <div class="container">
                 <div class="header-inner">
 
-                    <h1 class="logo">
-                        <a href="#">Challenger Auto Services</a>
-                    </h1>
+                    <p class="logo">
+                        <a href="#top" data-i18n="logo" data-i18n-aria="logoAria">Challenger Auto Services</a>
+                    </p>
 
-                    <button type="button" class="nav-link" aria-expanded="false" aria-controls="navigation">Menu</button>
+                    <button type="button" class="nav-link" aria-expanded="false" aria-controls="navigation" data-i18n="menu">Menu</button>
 
-                    <nav class="mega-nav" role="navigation" aria-label="Primary" id="navigation">
+                    <nav class="mega-nav" role="navigation" data-i18n-aria="nav.label" id="navigation">
                         <ul class="mega-nav__list">
                             <li class="mega-nav__item">
-                                <a href="#" class="mega-nav__link" data-nav="home">Home</a>
+                                <a href="#top" class="mega-nav__link" data-nav="home" data-i18n="nav.home">Home</a>
                             </li>
                             <li class="mega-nav__item has-mega">
                                 <button type="button" class="mega-nav__link mega-trigger" id="mega-trigger-services" data-menu="services" aria-expanded="false" aria-haspopup="true" aria-controls="mega-menu-panel">
-                                    Services
+                                    <span data-i18n="nav.services">Services</span>
                                     <span class="mega-nav__chevron" aria-hidden="true"></span>
                                 </button>
                             </li>
                             <li class="mega-nav__item has-mega">
                                 <button type="button" class="mega-nav__link mega-trigger" id="mega-trigger-about" data-menu="about" aria-expanded="false" aria-haspopup="true" aria-controls="mega-menu-panel">
-                                    About
+                                    <span data-i18n="nav.about">About</span>
                                     <span class="mega-nav__chevron" aria-hidden="true"></span>
                                 </button>
                             </li>
                             <li class="mega-nav__item">
-                                <a href="#" class="mega-nav__link nav-cta">Schedule Service</a>
+                                <a href="#contact" class="mega-nav__link nav-cta" data-i18n="nav.schedule">Schedule Service</a>
                             </li>
                         </ul>
                         <span class="nav-indicator" aria-hidden="true"></span>
@@ -57,34 +133,34 @@
                 </div>
             </div>
 
-            <div class="mega-menu-panel" id="mega-menu-panel" role="region" aria-label="Submenu" hidden>
+            <div class="mega-menu-panel" id="mega-menu-panel" role="region" data-i18n-aria="mega.label" hidden>
                 <div class="container">
                     <div class="mega-menu-panel__inner">
                         <div class="mega-menu-content" id="mega-panel-services" data-panel="services" role="region" aria-labelledby="mega-trigger-services" hidden>
                             <div class="mega-menu-columns">
                                 <div class="mega-menu-column">
-                                    <p class="mega-menu-label overline">Popular Services</p>
+                                    <p class="mega-menu-label overline" data-i18n="mega.services.popular">Popular Services</p>
                                     <ul>
-                                        <li><a href="#services">Oil Change Service</a></li>
-                                        <li><a href="#services">Brake Pad &amp; Rotor Service</a></li>
-                                        <li><a href="#services">Tire Service</a></li>
+                                        <li><a href="#services" data-i18n="mega.services.oil">Oil Change Service</a></li>
+                                        <li><a href="#services" data-i18n="mega.services.brakes">Brake Pad &amp; Rotor Service</a></li>
+                                        <li><a href="#services" data-i18n="mega.services.tires">Tire Service</a></li>
                                     </ul>
                                 </div>
                                 <div class="mega-menu-column">
-                                    <p class="mega-menu-label overline">Repairs &amp; Maintenance</p>
+                                    <p class="mega-menu-label overline" data-i18n="mega.services.repairs">Repairs &amp; Maintenance</p>
                                     <ul>
-                                        <li><a href="#services">General Repairs &amp; Maintenance</a></li>
-                                        <li><a href="#services">View All Services</a></li>
-                                        <li><a href="#services">Service Warranty</a></li>
+                                        <li><a href="#services" data-i18n="mega.services.general">General Repairs &amp; Maintenance</a></li>
+                                        <li><a href="#services" data-i18n="mega.services.viewAll">View All Services</a></li>
+                                        <li><a href="#services" data-i18n="mega.services.warranty">Service Warranty</a></li>
                                     </ul>
                                 </div>
                                 <div class="mega-menu-column">
-                                    <p class="mega-menu-label overline">Offers</p>
+                                    <p class="mega-menu-label overline" data-i18n="mega.services.offers">Offers</p>
                                     <ul>
-                                        <li><a href="#services">Special Offers</a></li>
-                                        <li><a href="#">Schedule Service</a></li>
+                                        <li><a href="#services" data-i18n="mega.services.special">Special Offers</a></li>
+                                        <li><a href="#contact" data-i18n="nav.schedule">Schedule Service</a></li>
                                     </ul>
-                                    <p class="mega-menu-note">Foreign &amp; domestic · honest estimates · no gimmicks.</p>
+                                    <p class="mega-menu-note" data-i18n="mega.services.note">Foreign &amp; domestic · honest estimates · no gimmicks.</p>
                                 </div>
                             </div>
                         </div>
@@ -92,19 +168,19 @@
                         <div class="mega-menu-content" id="mega-panel-about" data-panel="about" role="region" aria-labelledby="mega-trigger-about" hidden>
                             <div class="mega-menu-columns">
                                 <div class="mega-menu-column">
-                                    <p class="mega-menu-label overline">Our Shop</p>
+                                    <p class="mega-menu-label overline" data-i18n="mega.about.shop">Our Shop</p>
                                     <ul>
-                                        <li><a href="#about">About Us</a></li>
-                                        <li><a href="#about">Why Choose Us</a></li>
+                                        <li><a href="#about" data-i18n="mega.about.aboutUs">About Us</a></li>
+                                        <li><a href="#about" data-i18n="mega.about.whyUs">Why Choose Us</a></li>
                                     </ul>
                                 </div>
                                 <div class="mega-menu-column">
-                                    <p class="mega-menu-label overline">Connect</p>
+                                    <p class="mega-menu-label overline" data-i18n="mega.about.connect">Connect</p>
                                     <ul>
-                                        <li><a href="#">Schedule Service</a></li>
-                                        <li><a href="tel:5551234567">Call Us</a></li>
+                                        <li><a href="#contact" data-i18n="nav.schedule">Schedule Service</a></li>
+                                        <li><a href="tel:5551234567" data-i18n="mega.about.call">Call Us</a></li>
                                     </ul>
-                                    <p class="mega-menu-note">Family-owned. Treating every car as if it were our own.</p>
+                                    <p class="mega-menu-note" data-i18n="mega.about.note">Family-owned. Treating every car as if it were our own.</p>
                                 </div>
                             </div>
                         </div>
@@ -115,23 +191,25 @@
 
     </header>
 
-    <section class="band banner section-dark">
+    <main id="main-content">
+
+    <section class="band banner section-dark" aria-labelledby="hero-heading">
 
         <div class="banner-bg" aria-hidden="true"></div>
         <div class="banner-overlay" aria-hidden="true"></div>
 
         <div class="container">
             <div class="banner-content">
-                <p class="banner-eyebrow overline">We Service All Foreign and Domestic Makes</p>
+                <p class="banner-eyebrow overline" data-i18n="hero.eyebrow">We Service All Foreign and Domestic Makes</p>
 
-                <h2 class="display-heading">
-                    <span class="banner-line">Your Trusted Service Shop</span>
-                    <span class="banner-line">for Everything Automotive</span>
-                </h2>
+                <h1 id="hero-heading" class="display-heading">
+                    <span class="banner-line" data-i18n="hero.line1">Your Trusted Service Shop</span>
+                    <span class="banner-line" data-i18n="hero.line2">for Everything Automotive</span>
+                </h1>
 
-                <p class="banner-intro body-large">Honest, friendly service with no hassles or gimmicks. We treat every car as if it were our own — so you can drive with peace of mind.</p>
+                <p class="banner-intro body-large" data-i18n="hero.intro">Honest, friendly service with no hassles or gimmicks. We treat every car as if it were our own — so you can drive with peace of mind.</p>
 
-                <a href="#" class="button button-primary banner-cta">Schedule Service</a>
+                <a href="#contact" class="button button-primary banner-cta" data-i18n="hero.cta">Schedule Service</a>
             </div>
         </div>
 
@@ -140,28 +218,28 @@
     <section class="band section-light" id="about">
         <div class="container">
             <div class="section-header">
-                <p class="overline">Why Choose Us</p>
-                <h2>Built on Trust, Transparency, and Craftsmanship</h2>
-                <p class="section-lead">Family-owned and committed to doing the job right. No pressure, no jargon — just straightforward care for your vehicle.</p>
+                <p class="overline" data-i18n="about.overline">Why Choose Us</p>
+                <h2 data-i18n="about.title">Built on Trust, Transparency, and Craftsmanship</h2>
+                <p class="section-lead" data-i18n="about.lead">Family-owned and committed to doing the job right. No pressure, no jargon — just straightforward care for your vehicle.</p>
             </div>
 
             <div class="card-grid">
                 <article class="card">
-                    <h3>Honest Diagnostics</h3>
-                    <p>We explain what your car needs and why, so you can make informed decisions without the hard sell.</p>
+                    <h3 data-i18n="about.card1.title">Honest Diagnostics</h3>
+                    <p data-i18n="about.card1.text">We explain what your car needs and why, so you can make informed decisions without the hard sell.</p>
                 </article>
                 <article class="card card-light">
-                    <h3>Quality Parts &amp; Workmanship</h3>
-                    <p>From routine maintenance to complex repairs, we use quality parts and stand behind our work.</p>
+                    <h3 data-i18n="about.card2.title">Quality Parts &amp; Workmanship</h3>
+                    <p data-i18n="about.card2.text">From routine maintenance to complex repairs, we use quality parts and stand behind our work.</p>
                 </article>
                 <article class="card">
-                    <h3>Owner On Site</h3>
-                    <p>You'll always know who is working on your car. Approachable experts who take pride in every job.</p>
+                    <h3 data-i18n="about.card3.title">Owner On Site</h3>
+                    <p data-i18n="about.card3.text">You'll always know who is working on your car. Approachable experts who take pride in every job.</p>
                 </article>
             </div>
 
             <div class="section-cta">
-                <a href="#" class="button button-primary">Get in Touch</a>
+                <a href="#contact" class="button button-primary" data-i18n="about.cta">Get in Touch</a>
             </div>
         </div>
     </section>
@@ -169,80 +247,87 @@
     <section class="band section-dark" id="services">
         <div class="container">
             <div class="section-header section-header--center">
-                <p class="overline">Explore Our Services</p>
-                <h2>Complete Auto Repair &amp; Maintenance</h2>
-                <p class="section-lead">Everything your vehicle needs under one roof — performed with care and transparency.</p>
+                <p class="overline" data-i18n="services.overline">Explore Our Services</p>
+                <h2 data-i18n="services.title">Complete Auto Repair &amp; Maintenance</h2>
+                <p class="section-lead" data-i18n="services.lead">Everything your vehicle needs under one roof — performed with care and transparency.</p>
             </div>
 
             <div class="card-grid card-grid--services">
                 <article class="card">
-                    <h3>Oil Change Service</h3>
-                    <p>Keep your engine running smoothly with regular oil and filter service tailored to your vehicle.</p>
+                    <h3 data-i18n="services.card1.title">Oil Change Service</h3>
+                    <p data-i18n="services.card1.text">Keep your engine running smoothly with regular oil and filter service tailored to your vehicle.</p>
                 </article>
                 <article class="card">
-                    <h3>Brake Pad &amp; Rotor Service</h3>
-                    <p>Safe, reliable stopping power with thorough inspections and quality brake components.</p>
+                    <h3 data-i18n="services.card2.title">Brake Pad &amp; Rotor Service</h3>
+                    <p data-i18n="services.card2.text">Safe, reliable stopping power with thorough inspections and quality brake components.</p>
                 </article>
                 <article class="card">
-                    <h3>Tire Service</h3>
-                    <p>Rotation, balancing, and replacement to keep you confident on the road in every season.</p>
+                    <h3 data-i18n="services.card3.title">Tire Service</h3>
+                    <p data-i18n="services.card3.text">Rotation, balancing, and replacement to keep you confident on the road in every season.</p>
                 </article>
                 <article class="card">
-                    <h3>General Repairs</h3>
-                    <p>From check-engine lights to major repairs — honest diagnostics and expert workmanship.</p>
+                    <h3 data-i18n="services.card4.title">General Repairs</h3>
+                    <p data-i18n="services.card4.text">From check-engine lights to major repairs — honest diagnostics and expert workmanship.</p>
                 </article>
             </div>
 
             <div class="section-cta section-cta--center">
-                <a href="#" class="button button-primary">Schedule Service</a>
+                <a href="#contact" class="button button-primary" data-i18n="services.cta">Schedule Service</a>
             </div>
         </div>
     </section>
 
-    <section class="band section-light">
+    <section class="band section-light" id="contact">
         <div class="container">
             <div class="cta-band">
-                <h2>Ready for Honest Auto Care?</h2>
-                <p>Contact us today for friendly service you can trust — no gimmicks, just peace of mind.</p>
+                <h2 data-i18n="contact.title">Ready for Honest Auto Care?</h2>
+                <p data-i18n="contact.text">Contact us today for friendly service you can trust — no gimmicks, just peace of mind.</p>
                 <div class="cta-band__actions">
-                    <a href="#" class="button button-primary">Schedule Service</a>
-                    <a href="tel:5551234567" class="button button-secondary">Call Us</a>
+                    <a href="tel:5551234567" class="button button-primary" data-i18n="contact.schedule">Schedule Service</a>
+                    <a href="tel:5551234567" class="button button-secondary" data-i18n="contact.call">Call Us</a>
                 </div>
             </div>
         </div>
     </section>
+
+    </main>
 
     <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-block">
                     <h3>Challenger Auto Services</h3>
-                    <p class="footer-tagline">Your Trusted Service Shop for Everything Automotive</p>
+                    <p class="footer-tagline" data-i18n="footer.tagline">Your Trusted Service Shop for Everything Automotive</p>
                 </div>
                 <div class="footer-block">
-                    <h4>Hours of Operation</h4>
-                    <p>Mon–Fri: 8am – 6pm<br>Sat: 9am – 2pm<br>Sun: Closed</p>
+                    <h4 data-i18n="footer.hoursTitle">Hours of Operation</h4>
+                    <p data-i18n="footer.hours" data-i18n-html>
+                        <time datetime="Mo-Fr 08:00-18:00">Mon–Fri: 8am – 6pm</time><br>
+                        <time datetime="Sa 09:00-14:00">Sat: 9am – 2pm</time><br>
+                        Sun: Closed
+                    </p>
                 </div>
                 <div class="footer-block">
-                    <h4>Contact</h4>
-                    <p>
+                    <h4 data-i18n="footer.contact">Contact</h4>
+                    <address>
                         <a href="tel:5551234567">(555) 123-4567</a><br>
                         123 Main Street<br>
                         Your City, ST 00000
-                    </p>
+                    </address>
                 </div>
                 <div class="footer-block">
-                    <h4>Get in Touch</h4>
+                    <h4 data-i18n="footer.getInTouch">Get in Touch</h4>
                     <p>
-                        <a href="#" class="button button-primary button-sm">Schedule Service</a>
+                        <a href="#contact" class="button button-primary button-sm" data-i18n="footer.schedule">Schedule Service</a>
                     </p>
                 </div>
             </div>
-            <p class="copyright">&copy; Challenger Auto Services. All rights reserved.</p>
+            <p class="copyright" data-i18n="footer.copyright">&copy; Challenger Auto Services. All rights reserved.</p>
         </div>
     </footer>
 
-    <script type="module" src="js/mega-menu.js"></script>
-    <script type="module" src="js/banner-motion.js"></script>
+    <script type="module" src="js/i18n.js"></script>
+    <script type="module" src="js/mega-menu.js" defer></script>
+    <script type="module" src="js/banner-motion.js" defer></script>
 </body>
 </html>

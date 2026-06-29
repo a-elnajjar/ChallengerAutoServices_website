@@ -1,4 +1,4 @@
-import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@12.41.0/+esm";
+import { animate } from "https://cdn.jsdelivr.net/npm/motion@12.41.0/+esm";
 
 const nav = document.querySelector(".mega-nav");
 const panel = document.querySelector(".mega-menu-panel");
@@ -12,6 +12,8 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matc
 const desktop = () => window.matchMedia("(min-width: 768px)").matches;
 
 const CLOSE_DELAY = 250;
+const OPEN_DURATION = 0.18;
+const CLOSE_DURATION = 0.14;
 
 let activeMenu = null;
 let closeTimer = null;
@@ -25,7 +27,7 @@ function getTrigger(menuId) {
 function getPanelLinks(menuId) {
 	const root = desktop()
 		? panel?.querySelector(`[data-panel="${menuId}"]`)
-		: document.querySelector(`.mega-mobile-panel [data-panel="${menuId}"], .mega-mobile-panel`);
+		: document.querySelector(".mega-mobile-panel");
 
 	if (!root) {
 		return panel?.querySelector(`[data-panel="${menuId}"]`)?.querySelectorAll("a") ?? [];
@@ -57,7 +59,7 @@ function moveIndicator(target) {
 		return;
 	}
 
-	animate(indicator, props, { type: "spring", stiffness: 420, damping: 34 });
+	animate(indicator, props, { duration: 0.15, ease: "easeOut" });
 }
 
 function hideIndicator() {
@@ -68,32 +70,29 @@ function hideIndicator() {
 		return;
 	}
 
-	animate(indicator, { opacity: 0 }, { duration: 0.15 });
+	animate(indicator, { opacity: 0 }, { duration: 0.12 });
 }
 
-function revealColumns() {
-	const items = columns();
-	if (!items.length) return;
-
-	if (reducedMotion) {
-		items.forEach((item) => {
-			item.style.opacity = "1";
-			item.style.transform = "none";
-		});
-		return;
-	}
-
-	animate(
-		items,
-		{ opacity: [0, 1], y: [16, 0] },
-		{ delay: stagger(0.06), duration: 0.45, ease: [0.22, 1, 0.36, 1] }
-	);
+function showColumns() {
+	columns().forEach((item) => {
+		item.style.opacity = "1";
+		item.style.transform = "none";
+	});
 }
 
-function hideColumns(items) {
-	if (reducedMotion) return;
+function hideColumns() {
+	columns().forEach((item) => {
+		item.style.opacity = "0";
+	});
+}
 
-	animate(items, { opacity: 0, y: 8 }, { duration: 0.12 });
+function measurePanelHeight() {
+	panel.style.height = "auto";
+	panel.style.visibility = "hidden";
+	panel.style.overflow = "hidden";
+	const height = panel.scrollHeight;
+	panel.style.visibility = "";
+	return height;
 }
 
 function resetTriggers() {
@@ -116,57 +115,67 @@ function clearMobilePanels() {
 }
 
 function focusFirstPanelLink(menuId) {
-	const firstLink = getPanelLinks(menuId)[0];
-	firstLink?.focus();
+	getPanelLinks(menuId)[0]?.focus();
+}
+
+function setPanelContent(menuId) {
+	const content = panel.querySelector(`[data-panel="${menuId}"]`);
+	if (!content) return null;
+
+	contents.forEach((block) => {
+		block.hidden = block !== content;
+	});
+
+	return content;
 }
 
 function openMenu(menuId, { focusFirst = false } = {}) {
 	if (!panel || !desktop()) return;
 
-	const content = panel.querySelector(`[data-panel="${menuId}"]`);
 	const trigger = getTrigger(menuId);
-	if (!content || !trigger) return;
+	if (!setPanelContent(menuId) || !trigger) return;
 
 	clearTimeout(closeTimer);
 	panelAnimation?.stop?.();
 	clickPinned = false;
 
-	contents.forEach((block) => {
-		block.hidden = block !== content;
-		block.querySelectorAll(".mega-menu-column").forEach((col) => {
-			col.classList.remove("is-hidden");
-			col.style.opacity = reducedMotion ? "1" : "0";
-		});
-	});
+	const wasOpen = activeMenu && !panel.hidden;
 
 	panel.hidden = false;
 	setActiveTrigger(menuId);
 	activeMenu = menuId;
 	moveIndicator(trigger);
 
+	const targetHeight = measurePanelHeight();
+	showColumns();
+	panel.style.overflow = "hidden";
+
 	if (reducedMotion) {
 		panel.style.height = "auto";
 		panel.style.opacity = "1";
-		revealColumns();
+		if (focusFirst) focusFirstPanelLink(menuId);
+		return;
+	}
+
+	if (wasOpen) {
+		panel.style.height = `${targetHeight}px`;
+		panel.style.opacity = "1";
 		if (focusFirst) focusFirstPanelLink(menuId);
 		return;
 	}
 
 	panel.style.height = "0px";
 	panel.style.opacity = "0";
-	panel.style.overflow = "hidden";
 
 	requestAnimationFrame(() => {
-		const targetHeight = panel.scrollHeight;
 		panelAnimation = animate(
 			panel,
 			{ height: `${targetHeight}px`, opacity: 1 },
-			{ type: "spring", stiffness: 320, damping: 28, opacity: { duration: 0.2 } }
+			{ duration: OPEN_DURATION, ease: "easeOut" }
 		);
 
 		panelAnimation.then(() => {
 			panel.style.height = "auto";
-			revealColumns();
 			if (focusFirst) focusFirstPanelLink(menuId);
 		}).catch(() => {});
 	});
@@ -185,21 +194,23 @@ function closeMenu({ returnFocus = false } = {}) {
 		if (panel) {
 			panel.hidden = true;
 			panel.style.height = "";
+			panel.style.opacity = "";
 		}
 		contents.forEach((block) => {
 			block.hidden = true;
 		});
+		hideColumns();
 		activeMenu = null;
 		if (returnFocus && previousTrigger) previousTrigger.focus();
 		return;
 	}
 
-	const visibleColumns = [...columns()];
-	hideColumns(visibleColumns);
+	hideColumns();
 
 	if (reducedMotion) {
 		panel.hidden = true;
 		panel.style.height = "";
+		panel.style.opacity = "";
 		contents.forEach((block) => {
 			block.hidden = true;
 		});
@@ -217,12 +228,13 @@ function closeMenu({ returnFocus = false } = {}) {
 		panelAnimation = animate(
 			panel,
 			{ height: 0, opacity: 0 },
-			{ type: "spring", stiffness: 420, damping: 36, opacity: { duration: 0.15 } }
+			{ duration: CLOSE_DURATION, ease: "easeIn" }
 		);
 
 		panelAnimation.then(() => {
 			panel.hidden = true;
 			panel.style.height = "";
+			panel.style.opacity = "";
 			contents.forEach((block) => {
 				block.hidden = true;
 			});
@@ -286,26 +298,16 @@ function openMobileMenu(trigger) {
 	trigger.classList.add("is-active");
 	trigger.setAttribute("aria-expanded", "true");
 	activeMenu = menuId;
-
-	if (!reducedMotion) {
-		animate(
-			mobilePanel.querySelectorAll(".mega-menu-column"),
-			{ opacity: [0, 1], y: [12, 0] },
-			{ delay: stagger(0.05), duration: 0.35 }
-		);
-	}
 }
 
 function closeMobileNav() {
 	document.querySelector(".site-header")?.classList.remove("is-nav-open");
-	const navToggle = document.querySelector(".nav-link");
-	navToggle?.setAttribute("aria-expanded", "false");
+	document.querySelector(".nav-link")?.setAttribute("aria-expanded", "false");
 }
 
 function openMobileNav() {
 	document.querySelector(".site-header")?.classList.add("is-nav-open");
-	const navToggle = document.querySelector(".nav-link");
-	navToggle?.setAttribute("aria-expanded", "true");
+	document.querySelector(".nav-link")?.setAttribute("aria-expanded", "true");
 }
 
 if (nav && panel) {
