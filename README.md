@@ -4,6 +4,16 @@ Static marketing site for an auto repair shop — responsive layout, SEO metadat
 
 **Live site:** [https://a-elnajjar.github.io/ChallengerAutoServices_website](https://a-elnajjar.github.io/ChallengerAutoServices_website)
 
+## Before & after update
+
+### Before update
+
+![Homepage before the redesign](img/readme/before-update.png)
+
+### After update
+
+![Homepage after the redesign](img/readme/after-update.png)
+
 ## URLs
 
 | | Link |
