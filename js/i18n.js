@@ -1,3 +1,5 @@
+import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@12.41.0/+esm";
+
 const STORAGE_KEY = "cas-lang";
 const SUPPORTED = ["en", "ar"];
 
@@ -269,36 +271,55 @@ export function applyLanguage(lang) {
 }
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const FADE_DURATION = 250;
+let langAnimation = null;
+
+function markBannerTextVisible() {
+	document.querySelectorAll(".band.banner").forEach((banner) => {
+		banner.classList.add("is-text-visible");
+	});
+}
+
+function resetTranslatedElements(elements) {
+	elements.forEach((el) => {
+		el.style.opacity = "1";
+		el.style.transform = "";
+	});
+}
+
+function revealTranslatedText() {
+	const elements = document.querySelectorAll("[data-i18n]");
+	if (!elements.length) {
+		return Promise.resolve();
+	}
+
+	langAnimation?.stop?.();
+
+	langAnimation = animate(
+		elements,
+		{ opacity: [0, 1], y: [8, 0] },
+		{ delay: stagger(0.012), duration: 0.28, ease: "easeOut" }
+	);
+
+	return langAnimation.then(() => resetTranslatedElements(elements)).catch(() => {
+		resetTranslatedElements(elements);
+	});
+}
 
 function switchLanguage(lang) {
 	if (!SUPPORTED.includes(lang) || lang === document.documentElement.lang) {
 		return;
 	}
 
+	applyLanguage(lang);
+
 	if (reducedMotion) {
-		applyLanguage(lang);
+		markBannerTextVisible();
 		return;
 	}
 
-	const body = document.body;
-	body.classList.add("is-lang-switching");
-
-	const onFaded = () => {
-		applyLanguage(lang);
-		requestAnimationFrame(() => body.classList.remove("is-lang-switching"));
-	};
-
-	let done = false;
-	const finish = () => {
-		if (done) return;
-		done = true;
-		body.removeEventListener("transitionend", finish);
-		onFaded();
-	};
-
-	body.addEventListener("transitionend", finish);
-	setTimeout(finish, FADE_DURATION + 50);
+	revealTranslatedText().finally(() => {
+		markBannerTextVisible();
+	});
 }
 
 function initI18n() {

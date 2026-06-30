@@ -14,6 +14,7 @@ if (banner) {
 		[eyebrow, ...lines, intro, cta].forEach((el) => {
 			if (el) el.style.opacity = "1";
 		});
+		banner.classList.add("is-text-visible");
 	} else {
 		inView(
 			banner,
@@ -43,6 +44,8 @@ if (banner) {
 						{ delay: 0.5, duration: 0.7, type: "spring", stiffness: 260, damping: 22 }
 					);
 				}
+
+				banner.classList.add("is-text-visible");
 			},
 			{ amount: 0.35 }
 		);

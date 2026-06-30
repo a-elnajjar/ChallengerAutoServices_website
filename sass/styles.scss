@@ -70,17 +70,6 @@ body {
 	line-height: 1.65;
 	color: var(--color-text-on-light);
 	background: var(--color-bg-light);
-	transition: opacity 0.25s ease;
-
-	&.is-lang-switching {
-		opacity: 0;
-	}
-}
-
-@media (prefers-reduced-motion: reduce) {
-	body {
-		transition: none;
-	}
 }
 
 .skip-link {
@@ -781,6 +770,16 @@ button.nav-link {
 .banner-cta {
 	margin-top: var(--space-xl);
 	opacity: 0;
+}
+
+.band.banner.is-text-visible {
+	.banner-eyebrow,
+	.banner-line,
+	.banner-intro,
+	.banner-cta {
+		opacity: 1;
+		transform: none;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
