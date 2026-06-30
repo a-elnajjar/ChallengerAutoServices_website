@@ -57,6 +57,7 @@ export const translations = {
 		"about.card3.text":
 			"You'll always know who is working on your car. Approachable experts who take pride in every job.",
 		"about.cta": "Get in Touch",
+		"about.learnMore": "Learn Why Customers Choose Us",
 		"services.overline": "Explore Our Services",
 		"services.title": "Complete Auto Repair & Maintenance",
 		"services.lead":
@@ -144,6 +145,7 @@ export const translations = {
 		"about.card3.text":
 			"ستعرف دائماً من يعمل على سيارتك. خبراء ودودون يفخرون بكل مهمة.",
 		"about.cta": "تواصل معنا",
+		"about.learnMore": "اكتشف لماذا يختارنا العملاء",
 		"services.overline": "استكشف خدماتنا",
 		"services.title": "إصلاح وصيانة شاملة للسيارات",
 		"services.lead":
