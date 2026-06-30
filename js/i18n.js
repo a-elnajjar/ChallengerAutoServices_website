@@ -268,15 +268,45 @@ export function applyLanguage(lang) {
 	document.dispatchEvent(new CustomEvent("languagechange", { detail: { lang } }));
 }
 
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const FADE_DURATION = 250;
+
+function switchLanguage(lang) {
+	if (!SUPPORTED.includes(lang) || lang === document.documentElement.lang) {
+		return;
+	}
+
+	if (reducedMotion) {
+		applyLanguage(lang);
+		return;
+	}
+
+	const body = document.body;
+	body.classList.add("is-lang-switching");
+
+	const onFaded = () => {
+		applyLanguage(lang);
+		requestAnimationFrame(() => body.classList.remove("is-lang-switching"));
+	};
+
+	let done = false;
+	const finish = () => {
+		if (done) return;
+		done = true;
+		body.removeEventListener("transitionend", finish);
+		onFaded();
+	};
+
+	body.addEventListener("transitionend", finish);
+	setTimeout(finish, FADE_DURATION + 50);
+}
+
 function initI18n() {
 	applyLanguage(getInitialLang());
 
 	document.querySelectorAll("[data-lang-switch]").forEach((btn) => {
 		btn.addEventListener("click", () => {
-			const lang = btn.getAttribute("data-lang-switch");
-			if (lang && SUPPORTED.includes(lang)) {
-				applyLanguage(lang);
-			}
+			switchLanguage(btn.getAttribute("data-lang-switch"));
 		});
 	});
 }

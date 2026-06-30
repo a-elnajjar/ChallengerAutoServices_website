@@ -175,6 +175,17 @@ body {
   line-height: 1.65;
   color: var(--color-text-on-light);
   background: var(--color-bg-light);
+  transition: opacity 0.25s ease;
+}
+
+body.is-lang-switching {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
 }
 
 .skip-link {
