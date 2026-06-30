@@ -347,6 +347,25 @@ h4 {
   color: var(--color-text-on-dark-muted);
 }
 
+.prose {
+  max-width: 760px;
+  margin-bottom: var(--space-2xl);
+}
+
+.prose p {
+  color: var(--color-text-on-light-muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.prose p + p {
+  margin-top: var(--space-lg);
+}
+
+.section-dark .prose p {
+  color: var(--color-text-on-dark-muted);
+}
+
 .section-cta {
   margin-top: var(--space-2xl);
 }
@@ -971,6 +990,13 @@ button.nav-link {
     background: var(--color-accent);
     opacity: 0;
     pointer-events: none;
+  }
+  .mega-menu-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 90;
   }
   .mega-menu-panel:not([hidden]) .mega-menu-column {
     opacity: 1;

@@ -41,12 +41,12 @@ export const translations = {
 		"hero.line1": "Your Trusted Service Shop",
 		"hero.line2": "for Everything Automotive",
 		"hero.intro":
-			"Honest, friendly service with no hassles or gimmicks. We treat every car as if it were our own — so you can drive with peace of mind.",
+			"Honest, friendly service with no hassles or gimmicks. We treat every car as if it were our own, so you can drive with peace of mind.",
 		"hero.cta": "Schedule Service",
 		"about.overline": "Why Choose Us",
 		"about.title": "Built on Trust, Transparency, and Craftsmanship",
 		"about.lead":
-			"Family-owned and committed to doing the job right. No pressure, no jargon — just straightforward care for your vehicle.",
+			"Family-owned and committed to doing the job right. No pressure, no jargon, just straightforward care for your vehicle.",
 		"about.card1.title": "Honest Diagnostics",
 		"about.card1.text":
 			"We explain what your car needs and why, so you can make informed decisions without the hard sell.",
@@ -60,7 +60,7 @@ export const translations = {
 		"services.overline": "Explore Our Services",
 		"services.title": "Complete Auto Repair & Maintenance",
 		"services.lead":
-			"Everything your vehicle needs under one roof — performed with care and transparency.",
+			"Everything your vehicle needs under one roof, performed with care and transparency.",
 		"services.card1.title": "Oil Change Service",
 		"services.card1.text":
 			"Keep your engine running smoothly with regular oil and filter service tailored to your vehicle.",
@@ -72,11 +72,11 @@ export const translations = {
 			"Rotation, balancing, and replacement to keep you confident on the road in every season.",
 		"services.card4.title": "General Repairs",
 		"services.card4.text":
-			"From check-engine lights to major repairs — honest diagnostics and expert workmanship.",
+			"From check-engine lights to major repairs, honest diagnostics and expert workmanship.",
 		"services.cta": "Schedule Service",
 		"contact.title": "Ready for Honest Auto Care?",
 		"contact.text":
-			"Contact us today for friendly service you can trust — no gimmicks, just peace of mind.",
+			"Contact us today for friendly service you can trust, no gimmicks, just peace of mind.",
 		"contact.schedule": "Schedule Service",
 		"contact.call": "Call Us",
 		"footer.tagline":
@@ -97,7 +97,7 @@ export const translations = {
 		"lang.label": "اللغة",
 		"header.hours": "الإثنين–الجمعة 8ص–6م · السبت 9ص–2م",
 		"logo": "Challenger Auto Services",
-		"logoAria": "الصفحة الرئيسية — Challenger Auto Services",
+		"logoAria": "الصفحة الرئيسية، Challenger Auto Services",
 		"menu": "القائمة",
 		"nav.label": "التنقل الرئيسي",
 		"nav.home": "الرئيسية",
@@ -128,12 +128,12 @@ export const translations = {
 		"hero.line1": "ورشتك الموثوقة",
 		"hero.line2": "لجميع احتياجات سيارتك",
 		"hero.intro":
-			"خدمة صادقة وودودة بدون تعقيد أو مبالغات. نتعامل مع كل سيارة وكأنها ملكنا — لتقود باطمئنان.",
+			"خدمة صادقة وودودة بدون تعقيد أو مبالغات. نتعامل مع كل سيارة وكأنها ملكنا، لتقود باطمئنان.",
 		"hero.cta": "احجز موعداً",
 		"about.overline": "لماذا تختارنا",
 		"about.title": "نبني على الثقة والشفافية والإتقان",
 		"about.lead":
-			"مؤسسة عائلية ملتزمة بإنجاز العمل على أكمل وجه. بدون ضغط وبدون مصطلحات معقدة — فقط عناية مباشرة بسيارتك.",
+			"مؤسسة عائلية ملتزمة بإنجاز العمل على أكمل وجه. بدون ضغط وبدون مصطلحات معقدة، فقط عناية مباشرة بسيارتك.",
 		"about.card1.title": "تشخيص صادق",
 		"about.card1.text":
 			"نوضّح ما تحتاجه سيارتك ولماذا، لتتخذ قرارات مدروسة دون ضغط بيع.",
@@ -147,7 +147,7 @@ export const translations = {
 		"services.overline": "استكشف خدماتنا",
 		"services.title": "إصلاح وصيانة شاملة للسيارات",
 		"services.lead":
-			"كل ما تحتاجه سيارتك تحت سقف واحد — بعناية وشفافية.",
+			"كل ما تحتاجه سيارتك تحت سقف واحد، بعناية وشفافية.",
 		"services.card1.title": "تغيير الزيت",
 		"services.card1.text":
 			"حافظ على محركك بخدمة زيت وفلاتر منتظمة مناسبة لسيارتك.",
@@ -159,11 +159,11 @@ export const translations = {
 			"تدوير وموازنة واستبدال لتقود بثقة في كل موسم.",
 		"services.card4.title": "إصلاحات عامة",
 		"services.card4.text":
-			"من أضواء المحرك إلى الإصلاحات الكبرى — تشخيص صادق وعمل متقن.",
+			"من أضواء المحرك إلى الإصلاحات الكبرى، تشخيص صادق وعمل متقن.",
 		"services.cta": "احجز موعداً",
 		"contact.title": "هل أنت مستعد لعناية صادقة بسيارتك؟",
 		"contact.text":
-			"تواصل معنا اليوم لخدمة ودودة يمكنك الوثوق بها — بدون حيل، فقط راحة بال.",
+			"تواصل معنا اليوم لخدمة ودودة يمكنك الوثوق بها، بدون حيل، فقط راحة بال.",
 		"contact.schedule": "احجز موعداً",
 		"contact.call": "اتصل بنا",
 		"footer.tagline": "ورشتك الموثوقة لجميع احتياجات سيارتك",
